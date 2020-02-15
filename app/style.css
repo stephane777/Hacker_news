@@ -1,0 +1,36 @@
+html,
+body,
+#app {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,
+		Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+ul {
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 50px;
+}
+.post--title {
+	color: rgb(199, 31, 31);
+	padding-bottom: 3px;
+}
+.post--container {
+	padding: 10px 0;
+}
+.post--details {
+	color: rgb(140, 140, 140);
+}
