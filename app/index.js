@@ -1,16 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import queryString from "query-string";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./style.css";
-
-import Topstories from "./components/Topstories";
-const topContainer = () => {};
+import Nav from "./components/Nav";
+import Postlist from "./components/Postlist";
+import User from "./components/User";
 
 class App extends React.Component {
 	render() {
 		return (
-			<div className="container">
-				<Topstories />
-			</div>
+			<Router>
+				<div className="container">
+					<Nav />
+					<Route exact path="/" component={Postlist} />
+					<Route path="/user" component={User} />
+					<Route path="/new" render={props => <Postlist type="new" />} />
+				</div>
+			</Router>
 		);
 	}
 }

@@ -1,37 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import formatDate from "../utils/formatDate";
 
 class Post extends React.Component {
-	// static propTypes = {
-	// 	by: PropTypes.string.isRequired,
-	// 	title: PropTypes.string.isRequired,
-	// 	descendants: PropTypes.number.isRequired,
-	// 	url: PropTypes.string.isRequired
-	// };
-	formatDate(timestamp) {
-		const newDate = new Date(timestamp * 1000);
-		const isoDate = newDate.toISOString();
-		const [date, time] = isoDate.split("T");
-		const formatTime = time => {
-			const isPM = time.slice(0, 5).split(":")[0] > 12;
-			return isPM
-				? `${time.slice(0, 5).split(":")[0] - 12}:${
-						time.slice(0, 5).split(":")[1]
-				  } PM`
-				: `${time} AM`;
-		};
-		return `${date
-			.split("-")
-			.reverse()
-			.join("/")} , ${formatTime(time)}`;
-	}
 	render() {
 		return (
 			<div className="post--container">
-				<div className="post--title">{this.props.title}</div>
+				<a href={this.props.url}>
+					<div className="post--title">{this.props.title}</div>
+				</a>
 				<div className="post--details">
-					by {this.props.by} on {this.formatDate(this.props.time)} with{" "}
-					{this.props.descendants} comments
+					by{" "}
+					<Link
+						to={{
+							pathname: "/user",
+							search: `?id=${this.props.by}`
+						}}
+					>
+						{this.props.by}
+					</Link>{" "}
+					on {formatDate(this.props.time)} with {this.props.descendants}{" "}
+					comments
 				</div>
 			</div>
 		);
@@ -40,3 +30,7 @@ class Post extends React.Component {
 
 export default Post;
 //  https://hacker-news.firebaseio.com/v0/user/robert-boehnke.json?print=pretty
+
+// React Context
+// lift up the author to index.js and save it in state
+//

@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import Post from "./Post";
 import {
 	fechComments,
@@ -9,15 +9,20 @@ import {
 	fetchPosts
 } from "../utils/api";
 
-class Topstories extends React.Component {
+class Postlist extends React.Component {
 	state = {
 		mainPost: []
+	};
+	static defaultProps = {
+		type: "top" // default will be top
+	};
+	static propTypes = {
+		type: PropTypes.string.isRequired
 	};
 
 	componentDidMount() {
 		// console.log(`componentDidMount`);
-		fetchMainPosts("top").then(result => {
-			// console.log(result);
+		fetchMainPosts(this.props.type).then(result => {
 			this.setState({ mainPost: result });
 		});
 	}
@@ -41,4 +46,4 @@ class Topstories extends React.Component {
 	}
 }
 
-export default Topstories;
+export default Postlist;
