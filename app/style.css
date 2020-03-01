@@ -18,7 +18,9 @@ ul {
 li {
 	list-style-type: none;
 }
-
+a {
+	color: #000;
+}
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -29,19 +31,30 @@ li {
 	padding-bottom: 3px;
 	font-weight: bold;
 }
+.post--comment {
+	color: rgb(199, 31, 31);
+	padding-bottom: 3px;
+	font-weight: bold;
+	font-size: 28px;
+}
 .post--container {
 	margin: 10px 0;
 }
 .post--details {
 	color: rgb(140, 140, 140);
 }
-
 .post--container a:link,
-.post--container a:visited,
+.poat--container a:visited,
 .post--container a:hover,
 .post--container a:active {
 	text-decoration: none;
-	color: rgb(199, 31, 31);
+}
+.post--details a:link,
+.post--details a:visited,
+.post--details a:hover,
+.post--details a:active {
+	text-decoration: underline;
+	color: #000;
 }
 
 .row {
@@ -55,7 +68,7 @@ li {
 	font-size: 18px;
 	font-weight: bold;
 	text-decoration: none;
-	color: inherit;
+	color: #000;
 }
 
 .nav li {
@@ -65,9 +78,14 @@ li {
 	border: none;
 	background: transparent;
 }
-/* 
-		a:link - a normal, unvisited link
-		a:visited - a link the user has visited
-		a:hover - a link when the user mouses over it
-		a:active - a link the moment it is clicked 
-*/
+.link {
+	color: rgb(187, 46, 31);
+	text-decoration: none;
+	font-weight: bold;
+}
+.comment {
+	background-color: rgb(240, 240, 240);
+	border-radius: 8px;
+	padding: 10px 10px;
+	margin: 15px 0;
+}

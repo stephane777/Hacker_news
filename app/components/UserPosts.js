@@ -32,6 +32,7 @@ class UserPosts extends React.Component {
 						time={post.time}
 						url={post.url}
 						title={post.title}
+						class_title="post--title"
 					/>
 				))}
 			</React.Fragment>

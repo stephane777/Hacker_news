@@ -6,6 +6,7 @@ import "./style.css";
 import Nav from "./components/Nav";
 import Postlist from "./components/Postlist";
 import User from "./components/User";
+import Comments from "./components/Comments";
 
 class App extends React.Component {
 	render() {
@@ -14,8 +15,9 @@ class App extends React.Component {
 				<div className="container">
 					<Nav />
 					<Route exact path="/" component={Postlist} />
-					<Route path="/user" component={User} />
 					<Route path="/new" render={props => <Postlist type="new" />} />
+					<Route path="/user" component={User} />
+					<Route path="/comments" component={Comments} />
 				</div>
 			</Router>
 		);

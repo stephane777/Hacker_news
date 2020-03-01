@@ -11,7 +11,8 @@ const Nav = props => {
 						to={{ pathname: "/" }}
 						activeStyle={{
 							fontWeight: "bold",
-							color: "#C71F1F"
+							color: "#C71F1F",
+							textDecoration: "none"
 						}}
 					>
 						Top
@@ -22,7 +23,8 @@ const Nav = props => {
 						to={{ pathname: "/New" }}
 						activeStyle={{
 							fontWeight: "bold",
-							color: "#C71F1F"
+							color: "#C71F1F",
+							textDecoration: "none"
 						}}
 					>
 						New

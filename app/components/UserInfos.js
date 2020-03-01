@@ -23,7 +23,7 @@ class UserInfos extends React.Component {
 			<React.Fragment>
 				<div>
 					<h2>{id}</h2>
-					joined {formatDate(created)} has {karma} karma
+					joined <b>{formatDate(created)}</b> has <b>{karma}</b> karma
 					<p dangerouslySetInnerHTML={createMarkup()}></p>
 					<h2>Posts</h2>
 					<UserPosts posts={submitted} />

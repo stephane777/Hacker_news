@@ -38,6 +38,8 @@ class Postlist extends React.Component {
 					time={time}
 					url={url}
 					title={title}
+					id={id}
+					class_title="post--title"
 				/>
 			);
 		});
