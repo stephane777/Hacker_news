@@ -18,18 +18,27 @@ ul {
 li {
 	list-style-type: none;
 }
-a {
+/* a {
 	color: #000;
-}
+} */
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 50px;
+	height: 100%;
+}
+.container a {
+	text-decoration: none;
 }
 .post--title {
-	color: rgb(199, 31, 31);
 	padding-bottom: 3px;
 	font-weight: bold;
+}
+.post--title-light {
+	color: rgb(199, 31, 31);
+}
+.post--title-dark {
+	color: #cbcbcb;
 }
 .post--comment {
 	color: rgb(199, 31, 31);
@@ -38,24 +47,33 @@ a {
 	font-size: 28px;
 }
 .post--container {
-	margin: 10px 0;
+	margin: 15px 0;
 }
 .post--details {
 	color: rgb(140, 140, 140);
 }
-.post--container a:link,
+.post--details a {
+	text-decoration: underline;
+}
+.post--details-light a {
+	color: #000;
+}
+.post--details-dark a {
+	color: #bebebe;
+}
+/* .post--container a:link,
 .poat--container a:visited,
 .post--container a:hover,
 .post--container a:active {
 	text-decoration: none;
-}
-.post--details a:link,
+} */
+/* .post--details a:link,
 .post--details a:visited,
 .post--details a:hover,
 .post--details a:active {
 	text-decoration: underline;
 	color: #000;
-}
+} */
 
 .row {
 	display: flex;
@@ -74,6 +92,9 @@ a {
 .nav li {
 	margin-right: 10px;
 }
+.nav-dark a {
+	color: #bebebe;
+}
 .btn-clear {
 	border: none;
 	background: transparent;
@@ -88,4 +109,22 @@ a {
 	border-radius: 8px;
 	padding: 10px 10px;
 	margin: 15px 0;
+}
+.comment a:link {
+	color: #00e;
+}
+.comment a:visited {
+	color: #551a8b;
+}
+.comment a:active,
+.comment a:hover {
+	color: rgb(199, 31, 31);
+}
+/* .light {
+
+} */
+.dark {
+	color: #dadada;
+	background-color: #1c2022;
+	min-height: 100%;
 }

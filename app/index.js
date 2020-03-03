@@ -7,18 +7,31 @@ import Nav from "./components/Nav";
 import Postlist from "./components/Postlist";
 import User from "./components/User";
 import Comments from "./components/Comments";
+import { ThemeProvider } from "./contexts/theme";
 
 class App extends React.Component {
+	state = {
+		theme: "light",
+		toggleTheme: () => {
+			this.setState(({ theme }) => ({
+				theme: theme === "light" ? "dark" : "light"
+			}));
+		}
+	};
 	render() {
 		return (
 			<Router>
-				<div className="container">
-					<Nav />
-					<Route exact path="/" component={Postlist} />
-					<Route path="/new" render={props => <Postlist type="new" />} />
-					<Route path="/user" component={User} />
-					<Route path="/comments" component={Comments} />
-				</div>
+				<ThemeProvider value={this.state}>
+					<div className={this.state.theme}>
+						<div className="container">
+							<Nav />
+							<Route exact path="/" component={Postlist} />
+							<Route path="/new" render={props => <Postlist type="new" />} />
+							<Route path="/user" component={User} />
+							<Route path="/comments" component={Comments} />
+						</div>
+					</div>
+				</ThemeProvider>
 			</Router>
 		);
 	}

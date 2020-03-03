@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import formatDate from "../utils/formatDate";
 import Title from "./Title";
+import { ThemeConsumer } from "../contexts/theme";
 
 class Post extends React.Component {
 	static propTypes = {
-		// id: PropTypes.number.isRequired,
+		id: PropTypes.number.isRequired,
 		title: PropTypes.string.isRequired,
 		// url: PropTypes.string.isRequired,
 		by: PropTypes.string.isRequired,
@@ -18,37 +19,43 @@ class Post extends React.Component {
 		const { title, by, time, descendants, url, id, class_title } = this.props;
 		// !id ? console.log(this.props) : null;
 		return (
-			<React.Fragment>
-				<div className="post--container">
-					{/* <a href={url}>
-						<div className={class_title}>{title}</div>
-					</a> */}
-					<Title id={by} url={url}>
-						<div className={class_title}>{title}</div>
-					</Title>
-					<div className="post--details">
-						by{" "}
-						<Link
-							to={{
-								pathname: "/user",
-								search: `?id=${by}`
-							}}
-						>
-							{this.props.by}
-						</Link>{" "}
-						on {formatDate(time)} with{" "}
-						<Link
-							to={{
-								pathname: "/comments",
-								search: `?id=${id}`
-							}}
-						>
-							{descendants}
-						</Link>{" "}
-						comments
-					</div>
-				</div>
-			</React.Fragment>
+			<ThemeConsumer>
+				{({ theme }) => (
+					<React.Fragment>
+						<div className="post--container">
+							{/* <a href={url}>
+								<div className={class_title}>{title}</div>
+							</a> */}
+							<Title id={by} url={url}>
+								<div className={`${class_title} post--title-${theme}`}>
+									{title}
+								</div>
+							</Title>
+							<div className={`post--details post--details-${theme}`}>
+								by{" "}
+								<Link
+									to={{
+										pathname: "/user",
+										search: `?id=${by}`
+									}}
+								>
+									{this.props.by}
+								</Link>{" "}
+								on {formatDate(time)} with{" "}
+								<Link
+									to={{
+										pathname: "/comments",
+										search: `?id=${id}`
+									}}
+								>
+									{descendants}
+								</Link>{" "}
+								comments
+							</div>
+						</div>
+					</React.Fragment>
+				)}
+			</ThemeConsumer>
 		);
 	}
 }

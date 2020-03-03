@@ -24,17 +24,21 @@ class UserPosts extends React.Component {
 			<div>Loading Posts</div>
 		) : (
 			<React.Fragment>
-				{this.state.posts.map(post => (
-					<Post
-						key={post.id}
-						by={post.by}
-						descendants={post.descendants}
-						time={post.time}
-						url={post.url}
-						title={post.title}
-						class_title="post--title"
-					/>
-				))}
+				{this.state.posts.map(post => {
+					// console.log(post);
+					return (
+						<Post
+							key={post.id}
+							id={post.id}
+							by={post.by}
+							descendants={post.descendants}
+							time={post.time}
+							url={post.url}
+							title={post.title}
+							class_title="post--title"
+						/>
+					);
+				})}
 			</React.Fragment>
 		);
 	}

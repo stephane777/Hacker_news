@@ -23,7 +23,7 @@ class User extends React.Component {
 		);
 	}
 	render() {
-		console.log(this.state.userInfo);
+		// console.log(this.state.userInfo);
 		const { userInfo, loading } = this.state;
 		// const { id } = queryString.parse(this.props.location.search);
 		const { about, created, karma, id, submitted } = userInfo;
