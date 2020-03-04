@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { fetchComments } from "../utils/api";
 import formatDate from "../utils/formatDate";
+import { Themeconsumer, ThemeConsumer } from "../contexts/theme";
+import Loading from "../utils/Loading";
 
 class UserComments extends React.Component {
 	static propTypes = {
@@ -23,19 +25,23 @@ class UserComments extends React.Component {
 		const { loading, comments } = this.state;
 
 		return loading ? (
-			<div>Loading</div>
+			<Loading />
 		) : (
 			// <div>test</div>
 			comments.map(comment => {
 				const { by, time, text } = comment;
 				const createMarkup = () => ({ __html: text });
 				return (
-					<div key={time} className="comment">
-						<div>
-							by {by} on {formatDate(time)}
-						</div>
-						<p dangerouslySetInnerHTML={createMarkup()}></p>
-					</div>
+					<ThemeConsumer>
+						{({ theme }) => (
+							<div key={time} className={`comment comment-${theme}`}>
+								<div>
+									by {by} on {formatDate(time)}
+								</div>
+								<p dangerouslySetInnerHTML={createMarkup()}></p>
+							</div>
+						)}
+					</ThemeConsumer>
 				);
 			})
 		);

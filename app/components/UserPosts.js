@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Post from "./Post";
+import Loading from "../utils/Loading";
 
 import { fetchPosts } from "../utils/api";
 
@@ -21,7 +22,7 @@ class UserPosts extends React.Component {
 	render() {
 		const isLoading = !this.state.posts;
 		return isLoading ? (
-			<div>Loading Posts</div>
+			<Loading />
 		) : (
 			<React.Fragment>
 				{this.state.posts.map(post => {

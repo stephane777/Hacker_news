@@ -128,3 +128,9 @@ li {
 	background-color: #1c2022;
 	min-height: 100%;
 }
+#root {
+	height: 100%;
+}
+.comment-dark {
+	color: gray;
+}

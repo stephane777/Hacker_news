@@ -3,6 +3,8 @@ import QueryString from "query-string";
 import { fetchItem } from "../utils/api";
 import Post from "./Post";
 import UserComments from "./UserComments";
+import { ThemeConsumer } from "../contexts/theme";
+import Loading from "../utils/Loading";
 
 class Comments extends React.Component {
 	state = {
@@ -11,16 +13,22 @@ class Comments extends React.Component {
 	};
 	componentDidMount() {
 		const { id } = QueryString.parse(this.props.location.search);
-		fetchItem(id).then(post => {
-			// console.log(post);
-			// console.log(post.kids);
-			this.setState({ loading: false, post });
-		});
+		fetchItem(id)
+			.then(post => {
+				// console.log(post);
+				// console.log(post.kids);
+				this.setState({ loading: false, post });
+			})
+			.catch(error => {
+				this.setState({
+					loading: false
+				});
+			});
 	}
 	render() {
 		const { loading, post } = this.state;
 		return loading ? (
-			<div>loading</div>
+			<Loading />
 		) : (
 			<div className="comments">
 				<Post
@@ -32,7 +40,7 @@ class Comments extends React.Component {
 					descendants={post.descendants}
 					class_title="post--comment"
 				/>
-				<UserComments comments={post.kids} />
+				{post.kids && <UserComments comments={post.kids} />}
 			</div>
 		);
 	}

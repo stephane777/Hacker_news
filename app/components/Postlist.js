@@ -8,10 +8,12 @@ import {
 	fetchUser,
 	fetchPosts
 } from "../utils/api";
+import Loading from "../utils/Loading";
 
 class Postlist extends React.Component {
 	state = {
-		mainPost: []
+		mainPost: [],
+		loading: true
 	};
 	static defaultProps = {
 		type: "top" // default will be top
@@ -23,11 +25,12 @@ class Postlist extends React.Component {
 	componentDidMount() {
 		// console.log(`componentDidMount`);
 		fetchMainPosts(this.props.type).then(result => {
-			this.setState({ mainPost: result });
+			this.setState({ mainPost: result, loading: false });
 		});
 	}
 
 	render() {
+		const { loading } = this.state;
 		const stories = this.state.mainPost.map(story => {
 			const { by, descendants, time, title, url, id } = story;
 			return (
@@ -43,8 +46,7 @@ class Postlist extends React.Component {
 				/>
 			);
 		});
-		const isLoading = this.state.mainPost.length;
-		return !isLoading ? "Loading" : stories;
+		return loading ? <Loading /> : stories;
 	}
 }
 
